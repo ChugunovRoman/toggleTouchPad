@@ -1,6 +1,12 @@
 #!/bin/bash
 
-deviceId=`xinput list | grep DLL0652 | cut -d= -f2 | cut -d[ -f1`;
+deviceId=`xinput list | grep -iE '(DLL0652|touch|Synaptics)' | cut -d= -f2 | cut -d[ -f1`;
+
+if [ -z "$deviceId" ]; then
+	echo "TouchPad not found. Exit"
+	exit 1
+fi
+
 isEnabled=`xinput list-props ${deviceId} | grep 'Device Enabled'`;
 isEnabled=${isEnabled:22};
 
