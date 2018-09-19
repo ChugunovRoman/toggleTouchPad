@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deviceId=`xinput list | grep -iE '(DLL0652|touch|Synaptics)' | cut -d= -f2 | cut -d[ -f1`;
+deviceId=`xinput list | grep -iE '(DLL0652|DELL0)' | cut -d= -f2 | cut -d[ -f1`;
 
 if [ -z "$deviceId" ]; then
 	echo "TouchPad not found. Exit"
